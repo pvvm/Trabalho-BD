@@ -71,6 +71,6 @@ CREATE TABLE Alagamento
     codBairro  INTEGER REFERENCES Bairro(codBairro),
     dia 	   DATE NOT NULL,
     rua        VARCHAR(30) NOT NULL,
-    inicio     INTEGER UNSIGNED,
-    fim        INTEGER UNSIGNED,
+    inicio     VARCHAR(5),
+    fim        VARCHAR(5),
     imagem     BLOB);
