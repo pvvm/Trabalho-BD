@@ -1,0 +1,82 @@
+DROP TABLE IF EXISTS RA CASCADE;
+DROP TABLE IF EXISTS Temperatura CASCADE;
+DROP TABLE IF EXISTS Umidade CASCADE;
+DROP TABLE IF EXISTS Precipitacao CASCADE;
+DROP TABLE IF EXISTS Pressao_Atm CASCADE;
+DROP TABLE IF EXISTS Ventos CASCADE;
+DROP TABLE IF EXISTS Nebulosidade CASCADE;
+DROP TABLE IF EXISTS Est_Nebulosidade CASCADE;
+DROP TABLE IF EXISTS Bairro CASCADE;
+DROP TABLE IF EXISTS Alagamento CASCADE;
+
+CREATE TABLE RA
+    (codRA      INTEGER UNSIGNED PRIMARY KEY,
+    nome        VARCHAR(30) NOT NULL,
+    populacao   INTEGER UNSIGNED,
+    data_criacao DATE);
+
+CREATE TABLE Temperatura
+    (mes_Ano    VARCHAR(7),
+    codRA       INTEGER REFERENCES RA(codRA),
+    temp_Med    INTEGER NOT NULL,
+    temp_Max    INTEGER NOT NULL,
+    temp_Min    INTEGER NOT NULL,
+    id_temp		INTEGER PRIMARY KEY AUTO_INCREMENT);
+
+CREATE TABLE Umidade
+    (mes_Ano    VARCHAR(7),
+    codRA       INTEGER REFERENCES RA(codRA),
+    umi_Med     INTEGER UNSIGNED NOT NULL,
+    umi_Max     INTEGER UNSIGNED NOT NULL,
+    umi_Min     INTEGER UNSIGNED NOT NULL,
+	id_umi 		INTEGER PRIMARY KEY AUTO_INCREMENT);
+
+CREATE TABLE Precipitacao
+    (mes_Ano    VARCHAR(7),
+    codRA       INTEGER REFERENCES RA(codRA),
+    precipit    VARCHAR(30) NOT NULL,
+	id_precipt  INTEGER PRIMARY KEY AUTO_INCREMENT);
+
+CREATE TABLE Pressao_Atm
+    (mes_Ano    VARCHAR(7),
+    codRA       INTEGER REFERENCES RA(codRA),
+    patm_Med    INTEGER UNSIGNED NOT NULL,
+    patm_Max    INTEGER UNSIGNED NOT NULL,
+    patm_Min    INTEGER UNSIGNED NOT NULL,
+	id_patm INTEGER PRIMARY KEY AUTO_INCREMENT);
+
+CREATE TABLE Ventos
+    (mes_Ano    VARCHAR(7),
+    codRA       INTEGER REFERENCES RA(codRA),
+    vel_Med     INTEGER UNSIGNED NOT NULL,
+    vel_Max     INTEGER UNSIGNED NOT NULL,
+    vel_Min     INTEGER UNSIGNED NOT NULL,
+	id_vel INTEGER PRIMARY KEY AUTO_INCREMENT);
+
+CREATE TABLE Nebulosidade
+    (mes_Ano    VARCHAR(7),
+    codRA       INTEGER REFERENCES RA(codRA),
+    neb_Manha   VARCHAR(10) NOT NULL,
+    neb_Tarde   VARCHAR(10) NOT NULL,
+    neb_Noite   VARCHAR(10) NOT NULL,
+	id_neb INTEGER PRIMARY KEY AUTO_INCREMENT);
+
+CREATE TABLE Est_Nebulosidade
+    (codNeb     INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    id_neb     VARCHAR(7) REFERENCES Nebulosidade(id_neb),
+    nome        VARCHAR(15) NOT NULL);
+
+CREATE TABLE Bairro
+    (codBairro INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    codRA      INTEGER REFERENCES RA(codRA),
+    nome       VARCHAR(30) NOT NULL,
+    populacao  INTEGER UNSIGNED);
+
+CREATE TABLE Alagamento
+    (codAlagamento INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    codBairro  INTEGER REFERENCES Bairro(codBairro),
+    dia 	   DATE NOT NULL,
+    rua        VARCHAR(30) NOT NULL,
+    inicio	   VARCHAR(5),
+    fim		   VARCHAR(5),
+    imagem     BLOB);
