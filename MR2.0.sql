@@ -53,7 +53,7 @@ CREATE TABLE Ventos
 
 CREATE TABLE Est_Nebulosidade
     (codNeb     INTEGER UNSIGNED PRIMARY KEY,
-    descicao        VARCHAR(15) NOT NULL);
+    descricao        VARCHAR(15) NOT NULL);
 
 CREATE TABLE Nebulosidade
     (mes    VARCHAR(9) NOT NULL,
