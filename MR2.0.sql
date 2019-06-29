@@ -53,7 +53,7 @@ CREATE TABLE Ventos
 
 CREATE TABLE Est_Nebulosidade
     (codNeb     INTEGER UNSIGNED PRIMARY KEY,
-    nome        VARCHAR(15) NOT NULL);
+    descicao        VARCHAR(15) NOT NULL);
 
 CREATE TABLE Nebulosidade
     (mes    VARCHAR(9) NOT NULL,
@@ -77,7 +77,7 @@ CREATE TABLE Evaporacao
 CREATE TABLE Bairro
     (codBairro INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     codRA      INTEGER REFERENCES RA(codRA),
-    nome       VARCHAR(30) NOT NULL);
+    nome_bairro       VARCHAR(30) NOT NULL);
 
 CREATE TABLE Alagamento
     (codAlagamento INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
