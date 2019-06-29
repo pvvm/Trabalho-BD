@@ -18,7 +18,7 @@ CREATE TABLE RA
     data_criacao DATE);
 
 CREATE TABLE Temperatura
-    (data    VARCHAR(7),
+    (data_temp    VARCHAR(7),
     codRA       INTEGER REFERENCES RA(codRA),
     temp_Med    INTEGER NOT NULL,
     temp_Max    INTEGER NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE Temperatura
     id_temp		INTEGER PRIMARY KEY AUTO_INCREMENT);
 
 CREATE TABLE Umidade
-    (data    VARCHAR(7),
+    (data_umi    VARCHAR(7),
     codRA       INTEGER REFERENCES RA(codRA),
     umi_Med     INTEGER UNSIGNED NOT NULL,
     umi_Max     INTEGER UNSIGNED NOT NULL,
